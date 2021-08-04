@@ -2,7 +2,7 @@ package me.bardy.tree.node
 
 interface Node<T> : Collection<Node<T>> {
 
-    val name: T
+    val title: String
 
     val children: Collection<Node<T>>
 
@@ -10,7 +10,7 @@ interface Node<T> : Collection<Node<T>> {
 
         fun node(node: Node<T>): B
 
-        fun node(title: T, builder: B.() -> Unit = {}): B
+        fun node(title: String, builder: B.() -> Unit = {}): B
 
         fun build(): Node<T>
     }

@@ -2,19 +2,19 @@ package me.bardy.tree
 
 import me.bardy.tree.node.Node
 
-interface Tree<T> : Node<T>, Collection<Node<T>> {
+interface Tree<T, N> : Node<N>, Collection<Node<N>> {
 
-    val root: Node<T>
+    val root: Node<N>
 
     fun render(): T
 
-    interface Builder<B : Builder<B, N, T>, N : Node.Builder<N, T>, T> {
+    interface Builder<B : Builder<B, NB, T, N>, NB : Node.Builder<NB, N>, T, N> {
 
-        fun node(node: Node<T>): B
+        fun node(node: Node<N>): B
 
         @JvmSynthetic
-        fun node(title: T, builder: N.() -> Unit = {}): B
+        fun node(title: String, builder: NB.() -> Unit = {}): B
 
-        fun build(): Tree<T>
+        fun build(): Tree<T, N>
     }
 }

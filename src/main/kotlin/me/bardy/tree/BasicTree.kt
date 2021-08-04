@@ -2,13 +2,13 @@ package me.bardy.tree
 
 import me.bardy.tree.node.BasicNode
 import me.bardy.tree.node.Node
-import me.bardy.tree.render.TextRenderer
+import me.bardy.tree.render.TextTreeRenderer
 
-class BasicTree(root: Node<String>) : AbstractTree<String>(root) {
+class BasicTree(root: Node<String>) : AbstractTree<String, String>(root) {
 
-    override fun render() = TextRenderer.render(this)
+    override fun render() = TextTreeRenderer.render(this)
 
-    class Builder(title: String) : AbstractTree.Builder<Builder, BasicNode.Builder, String>(title) {
+    class Builder(title: String) : AbstractTree.Builder<Builder, BasicNode.Builder, String, String>(title) {
 
         override fun node(title: String, builder: BasicNode.Builder.() -> Unit) = apply {
             nodes.add(BasicNode.Builder(title).apply(builder).build())

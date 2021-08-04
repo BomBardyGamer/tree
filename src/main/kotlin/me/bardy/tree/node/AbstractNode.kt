@@ -1,13 +1,13 @@
 package me.bardy.tree.node
 
 abstract class AbstractNode<T>(
-    override val name: T,
+    override val title: String,
     override val children: Collection<Node<T>>
 ) : Node<T>, Collection<Node<T>> by children {
 
-    constructor(title: T, vararg children: Node<T>) : this(title, children.toList())
+    constructor(title: String, vararg children: Node<T>) : this(title, children.toList())
 
-    abstract class Builder<B : Builder<B, T>, T>(protected val title: T) : Node.Builder<B, T> {
+    abstract class Builder<B : Builder<B, T>, T>(protected val title: String) : Node.Builder<B, T> {
 
         protected val children = mutableListOf<Node<T>>()
 
